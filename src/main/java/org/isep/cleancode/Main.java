@@ -1,5 +1,8 @@
 package org.isep.cleancode;
 
+import org.isep.cleancode.application.TodoManager;
+import org.isep.cleancode.application.ITodoRepository;
+import org.isep.cleancode.persistence.TodoRepository;
 import org.isep.cleancode.presentation.TodoController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +15,17 @@ public class Main {
     }
 
     @Bean
-    public TodoController todoController() {
-        return new TodoController();
+    public ITodoRepository todoRepository() {
+        return new TodoRepository();
+    }
+
+    @Bean
+    public TodoManager todoManager(ITodoRepository todoRepository) {
+        return new TodoManager(todoRepository);
+    }
+
+    @Bean
+    public TodoController todoController(TodoManager todoManager) {
+        return new TodoController(todoManager);
     }
 }

@@ -3,13 +3,12 @@ package org.isep.cleancode.application;
 import java.util.List;
 
 import org.isep.cleancode.Todo;
-import org.isep.cleancode.persistence.TodoRepository;
 
 public class TodoManager {
     private static final int MAX_NAME_LENGTH = 64;
-    private final TodoRepository todoRepository;
+    private final ITodoRepository todoRepository;
 
-    public TodoManager(TodoRepository todoRepository) {
+    public TodoManager(ITodoRepository todoRepository) {
         this.todoRepository = todoRepository;
     }
 

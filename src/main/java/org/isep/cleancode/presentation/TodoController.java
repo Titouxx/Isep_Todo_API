@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.isep.cleancode.Todo;
 import org.isep.cleancode.application.TodoManager;
-import org.isep.cleancode.persistence.TodoRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/todos")
 public class TodoController {
-    private final TodoManager todoManager = new TodoManager(new TodoRepository());
+    private final TodoManager todoManager;
+
+    public TodoController(TodoManager todoManager) {
+        this.todoManager = todoManager;
+    }
 
     @GetMapping
     public List<Todo> getAllTodos() {
@@ -31,13 +34,7 @@ public class TodoController {
 
     private static class ErrorResponse {
         private final String error;
-        
-        public ErrorResponse(String error) {
-            this.error = error;
-        }
-        
-        public String getError() {
-            return error;
-        }
+        public ErrorResponse(String error) { this.error = error; }
+        public String getError() { return error; }
     }
 }
