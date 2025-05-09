@@ -21,7 +21,6 @@ public class TodoController {
     @PostMapping
     public ResponseEntity<?> createTodo(@RequestBody Todo todo) {
         try {
-            // Validate name
             if (todo.getName() == null || todo.getName().trim().isEmpty()) {
                 throw new IllegalArgumentException("Name is required");
             }
@@ -31,7 +30,6 @@ public class TodoController {
                 );
             }
             
-            // Validate uniqueness
             if (todos.stream().anyMatch(t -> t.getName().equals(todo.getName()))) {
                 throw new IllegalArgumentException("Todo name must be unique");
             }
