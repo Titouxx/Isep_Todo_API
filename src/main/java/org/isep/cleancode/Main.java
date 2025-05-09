@@ -1,5 +1,6 @@
 package org.isep.cleancode;
 
+import org.isep.cleancode.presentation.TodoController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
