@@ -1,11 +1,11 @@
-package org.isep.cleancode.persistence;
+package org.isep.cleancode.persistence.inmemory;
 
 import org.isep.cleancode.Todo;
 import org.isep.cleancode.application.ITodoRepository;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class TodoRepository implements ITodoRepository {
+public class TodoInMemoryRepository implements ITodoRepository {
     private static final List<Todo> todos = new CopyOnWriteArrayList<>();
 
     @Override

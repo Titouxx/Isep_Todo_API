@@ -1,6 +1,8 @@
 /readme.md
 /lecture.md
 
+data/
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
